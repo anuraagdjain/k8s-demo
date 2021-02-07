@@ -5,7 +5,7 @@ services:
   - docker
 
 before_install:
-  - curl https://sdk.cloud.google.com | bash > /dev/null
+  - curl -s https://sdk.cloud.google.com -o google-cloud-sdk.tar.gz
   - tar -xvf google-cloud-sdk.tar.gz
   - source $HOME/google-cloud-sdk/path.bash.inc
   - echo $GC_SERVICE_ACC | base64 --decode > service-account.json
