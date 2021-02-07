@@ -21,3 +21,7 @@ before_install:
 
 script:
   - docker run k8s-demo/react-test npm test -- --c
+
+deploy:
+  provider: script
+  script: bash ./deploy.sh
