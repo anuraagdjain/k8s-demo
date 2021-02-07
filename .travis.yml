@@ -5,8 +5,7 @@ services:
   - docker
 
 before_install:
-  - curl -s https://sdk.cloud.google.com -o google-cloud-sdk.tar.gz
-  - tar -xvf google-cloud-sdk.tar.gz
+  - curl https://sdk.cloud.google.com | bash > /dev/null;
   - source $HOME/google-cloud-sdk/path.bash.inc
   - echo $GC_SERVICE_ACC | base64 --decode > service-account.json
   - gcloud components update kubectl
