@@ -13,7 +13,7 @@ before_install:
   - source $HOME/google-cloud-sdk/path.bash.inc
   - echo $GC_SERVICE_ACC | base64 --decode > service-account.json
   - gcloud components update kubectl
-  - glcoud auth activate-service-account --key-file service-account.json
+  - gcloud auth activate-service-account --key-file service-account.json
   - gcloud config set project $GC_PROJECT_ID
   - gcloud config set compute/zone europe-west2-a
   - gcloud container clusters get-credentials k8s-cluster
