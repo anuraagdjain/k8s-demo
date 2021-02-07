@@ -20,7 +20,7 @@ before_install:
   - docker build -t k8s-demo/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run k8s-demo/react-test npm test -- --c
+  - docker run -e CI=true k8s-demo/react-test npm test -- --coverage
 
 deploy:
   provider: script
