@@ -1,0 +1,63 @@
+# namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: yeasy
+
+---
+# deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yeasy-deployment
+  namespace: yeasy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      component: yeasy-server
+  template:
+    metadata:
+      labels:
+        component: yeasy-server
+    spec:
+      containers:
+        - name: yeasy-server
+          image: yeasy/simple-web
+          ports:
+            - containerPort: 80
+
+---
+# service
+apiVersion: v1
+kind: Service
+metadata:
+  name: yeasy-service
+  namespace: yeasy
+spec:
+  type: ClusterIP
+  selector:
+    component: yeasy-server
+  ports:
+    - port: 80
+      targetPort: 80
+
+---
+# ingress
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-service
+  namespace: yeasy
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: 'true'
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /?(.*)
+            backend:
+              serviceName: yeasy-service
+              servicePort: 80
