@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: html5speed-server
-          image: satzisa/html5-speedtest
+          image: sohailniazi/html
           ports:
             - containerPort: 80
 

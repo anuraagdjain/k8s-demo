@@ -47,7 +47,7 @@ spec:
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: ingress-service
+  name: yeasy-ingress-service
   namespace: yeasy
   annotations:
     kubernetes.io/ingress.class: nginx
