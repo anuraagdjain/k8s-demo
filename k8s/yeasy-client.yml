@@ -62,7 +62,3 @@ spec:
             backend:
               serviceName: yeasy-service
               servicePort: 80
-          - path: /?(.*)
-            backend:
-              serviceName: html5speed-service
-              servicePort: 80
