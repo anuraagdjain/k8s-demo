@@ -44,11 +44,11 @@ spec:
 
 ---
 # generic-ingress
-apiVersion: networking.k8s.io/v1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: generic-ingress-service
-  namespace: default
+  namespace: yeasy
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/use-regex: 'true'
@@ -59,19 +59,6 @@ spec:
       http:
         paths:
           - path: /
-            pathType: Prefix
             backend:
-              service:
-                name: yeasy.yeasy-service
-                port:
-                  number: 80
-    - host: html5.cloudk8s.fun
-      http:
-        paths:
-          - path: /?(.*)
-            pathType: Prefix
-            backend:
-              service:
-                name: html5speed.html5speed-service
-                port:
-                  number: 80
+              serviceName: yeasy-service
+              servicePort: 80
