@@ -7,12 +7,12 @@ spec:
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
-  commonName: k8s.acquaix.com
+  commonName: k8s.cloudk8s.fun
   dnsNames:
-    - k8s.acquaix.com
+    - k8s.cloudk8s.fun
   acme:
     config:
       - http01:
           ingressClass: nginx
         domains:
-          - k8s.acquaix.com
+          - k8s.cloudk8s.fun

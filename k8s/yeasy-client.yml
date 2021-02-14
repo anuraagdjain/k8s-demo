@@ -43,22 +43,32 @@ spec:
       targetPort: 80
 
 ---
-# ingress
-apiVersion: networking.k8s.io/v1beta1
+# generic-ingress
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: yeasy-ingress-service
-  namespace: yeasy
+  name: generic-ingress-service
+  namespace: default
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/use-regex: 'true'
     nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   rules:
-    - host: yeazy.acquaix.com
+    - host: yeazy.cloudk8s.fun
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: yeasy.yeasy-service
+              servicePort: 80
+    - host: helt5.cloudk8s.fun
       http:
         paths:
           - path: /?(.*)
+            pathType: Prefix
             backend:
-              serviceName: yeasy-service
+              serviceName: html5speed.html5speed-service
               servicePort: 80

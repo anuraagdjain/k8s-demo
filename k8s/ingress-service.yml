@@ -11,10 +11,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - k8s.acquaix.com
-      secretName: k8s-ssl-domain
+        - k8s.cloudk8s.fun
+      secretName: k8s-cloudk8s-fun-domain
   rules:
-    - host: k8s.acquaix.com
+    - host: k8s.cloudk8s.fun
       http:
         paths:
           - path: /?(.*)
