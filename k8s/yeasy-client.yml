@@ -63,12 +63,15 @@ spec:
             backend:
               service:
                 name: yeasy.yeasy-service
-              servicePort: 80
-    - host: helt5.cloudk8s.fun
+                port:
+                  number: 80
+    - host: html5.cloudk8s.fun
       http:
         paths:
           - path: /?(.*)
             pathType: Prefix
             backend:
-              serviceName: html5speed.html5speed-service
-              servicePort: 80
+              service:
+                name: html5speed.html5speed-service
+                port:
+                  number: 80
